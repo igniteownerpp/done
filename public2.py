@@ -175,9 +175,9 @@ def handle_attack(message):
     # Start Attack Notification
     bot.reply_to(message,
         f"🚀 **Attack STARTED!**\n\n"
-        f"🌐 IP: {ip}\n"
+        f"🌐 IP: {target}\n"
         f"🔌 PORT: {port}\n"
-        f"⏰ TIME: {time} seconds\n", parse_mode="Markdown")
+        f"⏰ TIME: {time_duration} seconds\n", parse_mode="Markdown")
     
     def run_attack():
         global active_attacks, pending_feedback
@@ -188,9 +188,9 @@ def handle_attack(message):
             active_attacks = [a for a in active_attacks if not (a['user'] == user_id and a['ip'] == target and a['port'] == port)]
             bot.reply_to(message, 
                       f"🏁 **Attack OVER!**\n\n"
-                      f"🌐 IP: {ip}\n"
+                      f"🌐 IP: {target}\n"
                       f"🔌 PORT: {port}\n"
-                      f"⏰ TIME: {time} seconds\n", parse_mode="Markdown")
+                      f"⏰ TIME: {time_duration} seconds\n", parse_mode="Markdown")
             logging.info(f"Attack finished by {user_id} on {target}:{port}")
             pending_feedback[user_id] = current_time + 300  # 5 minutes to submit feedback
             
